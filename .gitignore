@@ -1,3 +1,5 @@
+haters
+
 # Logs
 logs
 *.log
@@ -57,3 +59,11 @@ typings/
 # dotenv environment variables file
 .env
 
+# IDEA IntelliJ/Webstorm
+.idea
+
+# Vagrant
+.vagrant
+
+# VS Code
+.vscode
