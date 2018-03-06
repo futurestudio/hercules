@@ -28,6 +28,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-redis.sh"
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-maria.sh"
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-postgres.sh"
+  config.vm.provision "shell", path: scriptsDir + "/scripts/install-rethinkdb.sh"
+  config.vm.provision "shell", path: scriptsDir + "/scripts/install-sqlite.sh"
 
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-rabbit.sh"
 
@@ -39,5 +41,8 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 5672, host: 5672     # RabbitMQ
   config.vm.network :forwarded_port, guest: 15672, host: 15672   # RabbitMQ for HTTP and management
   config.vm.network :forwarded_port, guest: 15671, host: 15671   # RabbitMQ for HTTPS and management
+  config.vm.network :forwarded_port, guest: 29015, host: 29015   # RethinkDB infrastructure connections
+  config.vm.network :forwarded_port, guest: 28015, host: 28015   # RethinkDB driver connections
+  config.vm.network :forwarded_port, guest: 8080, host: 8080     # RethinkDB admin console
 
 end
