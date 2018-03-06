@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 3306, host: 3306     # MariaDB
   config.vm.network :forwarded_port, guest: 5432, host: 5432     # Postgres
   config.vm.network :forwarded_port, guest: 5672, host: 5672     # RabbitMQ
-  config.vm.network :forwarded_port, guest: 15672, host: 15672   # RabbitMQ for HTTP clients
+  config.vm.network :forwarded_port, guest: 15672, host: 15672   # RabbitMQ for HTTP and management
+  config.vm.network :forwarded_port, guest: 15671, host: 15671   # RabbitMQ for HTTPS and management
 
 end
