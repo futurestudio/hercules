@@ -30,6 +30,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-postgres.sh"
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-rethinkdb.sh"
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-sqlite.sh"
+  config.vm.provision "shell", path: scriptsDir + "/scripts/install-cockroach.sh"
 
   config.vm.provision "shell", path: scriptsDir + "/scripts/install-rabbit.sh"
 
@@ -38,11 +39,16 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 6379, host: 6379     # Redis
   config.vm.network :forwarded_port, guest: 3306, host: 3306     # MariaDB
   config.vm.network :forwarded_port, guest: 5432, host: 5432     # Postgres
+
   config.vm.network :forwarded_port, guest: 5672, host: 5672     # RabbitMQ
   config.vm.network :forwarded_port, guest: 15672, host: 15672   # RabbitMQ for HTTP and management
   config.vm.network :forwarded_port, guest: 15671, host: 15671   # RabbitMQ for HTTPS and management
+
   config.vm.network :forwarded_port, guest: 29015, host: 29015   # RethinkDB infrastructure connections
   config.vm.network :forwarded_port, guest: 28015, host: 28015   # RethinkDB driver connections
   config.vm.network :forwarded_port, guest: 8080, host: 8080     # RethinkDB admin console
+
+  config.vm.network :forwarded_port, guest: 26257, host: 26257   # CockroachDB clients
+  config.vm.network :forwarded_port, guest: 8090, host: 8090     # CockroachDB admin console
 
 end
