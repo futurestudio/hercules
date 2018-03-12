@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-scriptsDir = File.dirname(__FILE__)
+currentDir = File.dirname(__FILE__)
+scriptsDir = currentDir + "/scripts/"
 
 Vagrant.configure("2") do |config|
 
@@ -10,29 +11,35 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   # Box naming
-  # config.vm.define = "hometown-1"
   config.vm.hostname = "hometown"
+
+  # Configure box settings
+  config.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", 1024]
+      vb.customize ["modifyvm", :id, "--cpus", 1]
+      vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
+  end
 
   # Create a dedicated private network
   # allows host-only access to the machine using the IP address
   config.vm.network :private_network, ip: "192.168.33.10"
 
   # Provisioning
-  config.vm.provision "shell", path: scriptsDir + "/scripts/update-system.sh"
+  config.vm.provision "shell", path: scriptsDir + "update-system.sh"
 
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-node.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-git.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-nginx.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-node.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-git.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-nginx.sh"
 
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-mongo.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-redis.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-maria.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-postgres.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-rethinkdb.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-sqlite.sh"
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-cockroach.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-mongo.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-redis.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-maria.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-postgres.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-rethinkdb.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-sqlite.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-cockroach.sh"
 
-  config.vm.provision "shell", path: scriptsDir + "/scripts/install-rabbit.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-rabbit.sh"
 
   # Forward ports
   config.vm.network :forwarded_port, guest: 27017, host: 27017   # MongoDB
