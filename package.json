@@ -1,19 +1,37 @@
 {
   "name": "hometown",
-  "version": "0.0.1",
   "description": "Soon :)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.0.1",
+  "bin": {
+    "hercules": "cli.js"
   },
+  "bugs": {
+    "url": "https://github.com/fs-opensource/hometown/issues"
+  },
+  "dependencies": {
+    "@adonisjs/ace": "~5.0.1",
+    "execa": "~0.9.0",
+    "listr": "~0.13.0"
+  },
+  "devDependencies": {
+    "eslint": "~4.18.2",
+    "eslint-config-standard": "~11.0.0",
+    "eslint-plugin-import": "~2.9.0",
+    "eslint-plugin-node": "~6.0.1",
+    "eslint-plugin-promise": "~3.6.0",
+    "eslint-plugin-standard": "~3.0.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0"
+  },
+  "homepage": "https://github.com/fs-opensource/hometown#readme",
+  "license": "MIT",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fs-opensource/hometown.git"
   },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fs-opensource/hometown/issues"
-  },
-  "homepage": "https://github.com/fs-opensource/hometown#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
