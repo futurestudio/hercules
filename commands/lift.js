@@ -25,12 +25,12 @@ class Lift extends Command {
 
     const initialized = await this.initialized()
 
-    // copy Vagrantfile and scripts to "Hometown" folder
     if (!initialized) {
+      this.info('No box existent. Lifting a new one!\n')
+
+      // copy Vagrantfile and scripts to "Hometown" folder
       await this.copy(Vagrantfile, Path.resolve(HometownDir, 'Vagrantfile'))
       await this.copy(Path.resolve(__dirname, '..', 'scripts'), Path.resolve(HometownDir, 'scripts'))
-
-      this.info('No box existent. Lifting a new one!\n')
 
       // lift hometown VM
       const result = Execa('vagrant', ['up'], { cwd: HometownDir })
