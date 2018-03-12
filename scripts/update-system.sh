@@ -14,6 +14,4 @@ locale-gen en_US.UTF-8
 
 # Install common packages
 apt-get install -y software-properties-common curl wget
-apt-get install -y build-essential dos2unix gcc git libmcrypt4 libpcre3-dev ntp unzip \
-make python2.7-dev python-pip re2c supervisor unattended-upgrades whois vim libnotify-bin \
-pv cifs-utils mcrypt bash-completion zsh
+apt-get install -y build-essential dos2unix gcc libmcrypt4 libpcre3-dev ntp unzip make python2.7-dev python-pip unattended-upgrades whois libnotify-bin pv cifs-utils mcrypt bash-completion zsh
