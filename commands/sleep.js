@@ -19,7 +19,6 @@ class Sleep extends Command {
   }
 
   async handle() {
-    // lift hometown VM
     const result = Execa('vagrant', ['suspend'], { cwd: HometownDir })
     result.stdout.pipe(process.stdout)
     result.stderr.pipe(process.stderr)
