@@ -1,6 +1,7 @@
 'use strict'
 
 const Os = require('os')
+const Ora = require('ora')
 const Path = require('path')
 const Execa = require('execa')
 const { Command } = require('@adonisjs/ace')
@@ -18,9 +19,11 @@ class Sleep extends Command {
   }
 
   async handle () {
-    const result = Execa('vagrant', ['suspend'], { cwd: HometownDir })
-    result.stdout.pipe(process.stdout)
-    result.stderr.pipe(process.stderr)
+    const spinner = Ora('Suspending your box').start()
+
+    await Execa('vagrant', ['suspend'], { cwd: HometownDir })
+
+    spinner.succeed('Let it sleep. Sshhh')
   }
 }
 
