@@ -6,7 +6,7 @@ const Ace = require('@adonisjs/ace')
 const UpdateNotifier = require('update-notifier')
 const Pkg = require(Path.resolve(__dirname, 'package.json'))
 
-UpdateNotifier({ Pkg }).notify()
+UpdateNotifier({ pkg: Pkg }).notify()
 
 Ace.addCommand(require('./commands/up'))
 Ace.addCommand(require('./commands/lift'))
