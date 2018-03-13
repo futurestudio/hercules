@@ -9,22 +9,32 @@ const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Box {
   async status () {
-    return Execa('vagrant', ['status'], { cwd: HometownDir })
+    try {
+      const result = await Execa('vagrant', ['status'], { cwd: HometownDir })
+      return result
+    } catch (err) {
+      return err
+    }
   }
 
   async isRunning () {
-    const result = await this.status()
-    return result.stdout && result.stdout.includes('running')
+    const { stdout = '' } = await this.status()
+    return stdout.includes('running')
   }
 
   async isSaved () {
-    const result = await this.status()
-    return result.stdout && result.stdout.includes('saved')
+    const { stdout = '' } = await this.status()
+    return stdout.includes('saved')
   }
 
   async notCreated () {
-    const result = await this.status()
-    return result.stdout && result.stdout.includes('not created')
+    const { stdout = '' } = await this.status()
+    return stdout.includes('not created')
+  }
+
+  async isCreated () {
+    const notCreated = await this.notCreated()
+    return !notCreated
   }
 }
 
