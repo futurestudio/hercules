@@ -28,8 +28,8 @@ class Box {
   }
 
   async notCreated () {
-    const { stdout = '' } = await this.status()
-    return stdout.includes('not created')
+    const { stdout = '', stderr = '' } = await this.status()
+    return stdout.includes('not created') || stderr.includes('to create a new Vagrant')
   }
 
   async isCreated () {
