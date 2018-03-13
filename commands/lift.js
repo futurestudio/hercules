@@ -28,28 +28,44 @@ class Lift extends Command {
     if (!initialized) {
       this.info('No box existent. Lifting a new one!\n')
 
-      // copy Vagrantfile and scripts to "Hometown" folder
-      await this.copy(Vagrantfile, Path.resolve(HometownDir, 'Vagrantfile'))
-      await this.copy(Path.resolve(__dirname, '..', 'scripts'), Path.resolve(HometownDir, 'scripts'))
-
-      // lift hometown VM
-      const result = Execa('vagrant', ['up'], { cwd: HometownDir })
-      result.stdout.pipe(process.stdout)
-      result.stderr.pipe(process.stderr)
-
-      return result
+      return this.create()
     }
 
-    const spinner = Ora('Lifting your box').start()
+    const spinner = Ora('Bringing your box back from sleep').start()
 
     await Execa('vagrant', ['up'], { cwd: HometownDir })
 
-    spinner.succeed('Your box is ready to use')
+    spinner.succeed('Ready to use')
   }
 
   async initialized () {
     const file = Path.resolve(HometownDir, 'Vagrantfile')
+
     return this.pathExists(file)
+  }
+
+  async create () {
+    // copy Vagrantfile and scripts to "Hometown" folder
+    this.copyVagrantfile()
+    this.copyScripts()
+
+    // lift hometown VM
+    const result = Execa('vagrant', ['up'], { cwd: HometownDir })
+    result.stdout.pipe(process.stdout)
+    result.stderr.pipe(process.stderr)
+  }
+
+  async copyVagrantfile () {
+    const target = Path.resolve(HometownDir, 'Vagrantfile')
+
+    await this.copy(Vagrantfile, target)
+  }
+
+  async copyScripts () {
+    const source = Path.resolve(__dirname, '..', 'scripts')
+    const target = Path.resolve(HometownDir, 'scripts')
+
+    await this.copy(source, target)
   }
 }
 
