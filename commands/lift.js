@@ -25,8 +25,9 @@ class Lift extends Command {
     await this.ensureDir(HometownDir)
 
     const spinner = Ora('Checking box status').start()
+    const initialized = await this.initialized()
 
-    if (await Box.notCreated()) {
+    if (!initialized) {
       spinner.stop()
       this.info('No box existent. Lifting a new one! This takes some minutes.\n')
 
@@ -39,6 +40,13 @@ class Lift extends Command {
     await Execa('vagrant', ['up'], { cwd: HometownDir })
 
     spinner.succeed('Ready to use')
+  }
+
+  async initialized () {
+    const vagrantfile = Path.resolve(HometownDir, 'Vagrantfile')
+    const [exists, created] = await Promise.all([this.pathExists(vagrantfile), Box.isCreated()])
+
+    return exists && created
   }
 
   async create () {
