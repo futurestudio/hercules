@@ -15,9 +15,10 @@ Vagrant.configure("2") do |config|
 
   # Configure box settings
   config.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", 1024]
-      vb.customize ["modifyvm", :id, "--cpus", 1]
-      vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
+    vb.name = "hometown"
+    vb.customize ["modifyvm", :id, "--memory", 1024]
+    vb.customize ["modifyvm", :id, "--cpus", 1]
+    vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
   end
 
   # Create a dedicated private network

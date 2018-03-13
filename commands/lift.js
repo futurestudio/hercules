@@ -5,6 +5,7 @@ const Ora = require('ora')
 const Path = require('path')
 const Execa = require('execa')
 const { Command } = require('@adonisjs/ace')
+const Box = require(Path.resolve(__dirname, 'utils', 'box'))
 
 const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
@@ -23,25 +24,21 @@ class Lift extends Command {
     // ensure "Hometown" folder in user home dir
     await this.ensureDir(HometownDir)
 
-    const initialized = await this.initialized()
+    const spinner = Ora('Checking box status').start()
 
-    if (!initialized) {
-      this.info('No box existent. Lifting a new one!\n')
+    if (await Box.notCreated()) {
+      spinner.stop()
+      this.info('No box existent. Lifting a new one! This takes some minutes.\n')
 
-      return this.create()
+      await this.create()
+      return
     }
 
-    const spinner = Ora('Bringing your box back from sleep').start()
+    spinner.text('Bringing your box back from sleep')
 
     await Execa('vagrant', ['up'], { cwd: HometownDir })
 
     spinner.succeed('Ready to use')
-  }
-
-  async initialized () {
-    const file = Path.resolve(HometownDir, 'Vagrantfile')
-
-    return this.pathExists(file)
   }
 
   async create () {
@@ -57,15 +54,21 @@ class Lift extends Command {
 
   async copyVagrantfile () {
     const target = Path.resolve(HometownDir, 'Vagrantfile')
+    const exists = await this.pathExists(target)
 
-    await this.copy(Vagrantfile, target)
+    if (!exists) {
+      await this.copy(Vagrantfile, target)
+    }
   }
 
   async copyScripts () {
     const source = Path.resolve(__dirname, '..', 'scripts')
     const target = Path.resolve(HometownDir, 'scripts')
+    const exists = await this.pathExists(target)
 
-    await this.copy(source, target)
+    if (!exists) {
+      await this.copy(source, target)
+    }
   }
 }
 
