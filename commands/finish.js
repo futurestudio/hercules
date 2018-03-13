@@ -1,6 +1,7 @@
 'use strict'
 
 const Os = require('os')
+const Ora = require('ora')
 const Path = require('path')
 const Execa = require('execa')
 const { Command } = require('@adonisjs/ace')
@@ -18,11 +19,21 @@ class Finish extends Command {
   }
 
   async handle () {
-    const result = Execa('vagrant destroy', { cwd: HometownDir, shell: true, stdio: 'inherit' })
+    const destroy = await this.confirm('Delete the hometown box?', { default: false })
 
-    // result.stdin.pipe(process.stdin)
-    result.stdout.pipe(process.stdout)
-    result.stderr.pipe(process.stderr)
+    if (destroy) {
+      const spinner = Ora('Deleting the box').start()
+
+      const result = await Execa('vagrant destroy --force', { cwd: HometownDir, shell: true })
+
+      if (result.stderr) {
+        this.error(result.stderr)
+        spinner.stop()
+        return
+      }
+
+      spinner.succeed('Box deleted')
+    }
   }
 }
 
