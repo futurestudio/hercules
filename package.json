@@ -12,7 +12,8 @@
     "@adonisjs/ace": "~5.0.1",
     "execa": "~0.9.0",
     "listr": "~0.13.0",
-    "ora": "~2.0.0"
+    "ora": "~2.0.0",
+    "update-notifier": "~2.3.0"
   },
   "devDependencies": {
     "eslint": "~4.18.2",
