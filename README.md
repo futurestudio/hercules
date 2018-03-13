@@ -1,7 +1,7 @@
 # hometown
 Future Studio Hometown provisions a global Vagrant box that gives you a great development setup. No need to create an individual Vagrant box for each of your project.
 
-Hometown is the single development box you can use for all your projects. It ships with commonly used databases and tools. It also comes with a CLI called **hercules**.
+Hometown is the single development box you can use for all your projects. It ships with commonly used databases and tools. It also comes with a CLI called **`hercules`**.
 
 Hometown is disposable. If things are messed up, just throw out the old one and create a new box.
 
@@ -23,6 +23,7 @@ npm i -g https://github.com/fs-opensource/hometown.git
 
 That’s it 🚀
 
+*Hint: we’ll update the install link to an NPM package name as soon as we publish an official version*
 
 ## Usage
 Hometown includes the `hercules` CLI. `hercules` is a CLI to manage your Hometown Vagrant box.
@@ -50,8 +51,10 @@ hercules finish
 ```
 
 
-### Commands
-`hercules` is a CLI interface between you and the Hometown Vagrant box. Hometown is a box that you can use for all your projects. Manage the box (start, suspend, destroy) with the following commands:
+## Commands
+`hercules` is a CLI interface between you and the Hometown Vagrant box.
+
+Hometown is a box that you can use for all your projects. Manage the box (start, suspend, destroy) with the following commands:
 
 - `lift`: create or start the hometown box
 - `up`: is an alias for `lift`
