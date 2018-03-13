@@ -1,13 +1,9 @@
 'use strict'
 
-const Os = require('os')
 const Ora = require('ora')
 const Path = require('path')
-const Execa = require('execa')
 const { Command } = require('@adonisjs/ace')
-
-const UserHomeDir = Os.homedir()
-const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
+const Box = require(Path.resolve(__dirname, 'utils', 'box'))
 
 class Status extends Command {
   static get signature () {
@@ -21,35 +17,20 @@ class Status extends Command {
   async handle () {
     const spinner = Ora('Fetching status').start()
 
-    // lift hometown VM
-    const result = await Execa('vagrant', ['status'], { cwd: HometownDir })
-    spinner.stop()
-
-    if (this.isRunning(result)) {
+    if (await Box.isRunning()) {
+      spinner.stop()
       return this.success('\nRunning\n')
     }
 
-    if (this.isSaved(result)) {
+    if (await Box.isSaved()) {
+      spinner.stop()
       return this.info('\nSleeping\n')
     }
 
-    if (this.notCreated(result)) {
+    if (await Box.notCreated()) {
+      spinner.stop()
       return this.warn('\nNot created\n')
     }
-
-    this.info(result.stdout)
-  }
-
-  isRunning (result) {
-    return result.stdout && result.stdout.includes('running')
-  }
-
-  isSaved (result) {
-    return result.stdout && result.stdout.includes('saved')
-  }
-
-  notCreated (result) {
-    return result.stdout && result.stdout.includes('not created')
   }
 }
 
