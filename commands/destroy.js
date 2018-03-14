@@ -5,6 +5,7 @@ const Ora = require('ora')
 const Path = require('path')
 const Execa = require('execa')
 const { Command } = require('@adonisjs/ace')
+const Box = require(Path.resolve(__dirname, 'utils', 'box'))
 
 const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
@@ -20,10 +21,17 @@ class Destroy extends Command {
 
   async handle () {
     try {
+      const spinner = Ora('Checking box status').start()
+
+      if (await Box.notCreated()) {
+        spinner.stop()
+        return this.warn('\nNo box to delete. Stopping here.\n')
+      }
+
       const destroy = await this.confirm('Delete the hometown box?', { default: false })
 
       if (destroy) {
-        const spinner = Ora('Deleting the box').start()
+        spinner.text('Deleting the box')
 
         const result = await Execa('vagrant destroy --force', { cwd: HometownDir, shell: true })
 

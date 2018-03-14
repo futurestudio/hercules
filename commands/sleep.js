@@ -5,6 +5,7 @@ const Ora = require('ora')
 const Path = require('path')
 const Execa = require('execa')
 const { Command } = require('@adonisjs/ace')
+const Box = require(Path.resolve(__dirname, 'utils', 'box'))
 
 const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
@@ -20,7 +21,12 @@ class Sleep extends Command {
 
   async handle () {
     try {
-      const spinner = Ora('Suspending your box').start()
+      const spinner = Ora('Checking box status').start()
+
+      if (await Box.notCreated()) {
+        spinner.stop()
+        return this.warn('\nNo box existing. Stopping here.\n')
+      }
 
       await Execa('vagrant', ['suspend'], { cwd: HometownDir })
 
