@@ -9,9 +9,9 @@ const { Command } = require('@adonisjs/ace')
 const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
-class Finish extends Command {
+class Destroy extends Command {
   static get signature () {
-    return 'finish'
+    return 'destroy'
   }
 
   static get description () {
@@ -44,4 +44,4 @@ class Finish extends Command {
   }
 }
 
-module.exports = Finish
+module.exports = Destroy
