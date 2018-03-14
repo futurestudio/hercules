@@ -21,25 +21,32 @@ class Lift extends Command {
   }
 
   async handle () {
-    // ensure "Hometown" folder in user home dir
-    await this.ensureDir(HometownDir)
+    try {
+      // ensure "Hometown" folder in user home dir
+      await this.ensureDir(HometownDir)
 
-    const spinner = Ora('Checking box status').start()
-    const initialized = await this.initialized()
+      const spinner = Ora('Checking box status').start()
+      const initialized = await this.initialized()
 
-    if (!initialized) {
-      spinner.stop()
-      this.info('No box existent. Lifting a new one! This takes some minutes.\n')
+      if (!initialized) {
+        spinner.stop()
+        this.info('No box existent. Lifting a new one! This takes some minutes.\n')
 
-      await this.create()
-      return
+        await this.create()
+        return
+      }
+
+      spinner.text('Bringing your box back from sleep')
+
+      await Execa('vagrant', ['up'], { cwd: HometownDir })
+
+      spinner.succeed('Ready to use')
+    } catch (err) {
+      // catch any error and print the error message
+      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
+      // exit the process to stop everything
+      process.exit(1)
     }
-
-    spinner.text('Bringing your box back from sleep')
-
-    await Execa('vagrant', ['up'], { cwd: HometownDir })
-
-    spinner.succeed('Ready to use')
   }
 
   async initialized () {

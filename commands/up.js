@@ -1,6 +1,7 @@
 'use strict'
 
-const Lift = require('./lift')
+const Path = require('path')
+const Lift = require(Path.resolve(__dirname, 'lift'))
 
 class Up extends Lift {
   static get signature () {

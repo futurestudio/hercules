@@ -19,30 +19,36 @@ class Status extends Command {
   }
 
   async handle () {
-    await this.ensureDir(HometownDir)
+    try {
+      await this.ensureDir(HometownDir)
 
-    const spinner = Ora('Fetching status').start()
+      const spinner = Ora('Fetching status').start()
 
-    if (await Box.isRunning()) {
+      if (await Box.isRunning()) {
+        spinner.stop()
+        return this.success('\nRunning\n')
+      }
+
+      if (await Box.isSaved()) {
+        spinner.stop()
+        return this.info('\nSleeping\n')
+      }
+
+      if (await Box.notCreated()) {
+        spinner.stop()
+        return this.warn('\nNot created\n')
+      }
+
       spinner.stop()
-      return this.success('\nRunning\n')
+
+      const status = await Box.status()
+      console.log(status.stdout)
+    } catch (err) {
+      // catch any error and print the error message
+      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
+      // exit the process to stop everything
+      process.exit(1)
     }
-
-    if (await Box.isSaved()) {
-      spinner.stop()
-      return this.info('\nSleeping\n')
-    }
-
-    if (await Box.notCreated()) {
-      spinner.stop()
-      return this.warn('\nNot created\n')
-    }
-
-    spinner.stop()
-
-    const status = await Box.status()
-    console.log(status.stdout)
-    console.log(status.stderr)
   }
 }
 

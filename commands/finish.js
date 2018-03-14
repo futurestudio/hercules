@@ -19,20 +19,27 @@ class Finish extends Command {
   }
 
   async handle () {
-    const destroy = await this.confirm('Delete the hometown box?', { default: false })
+    try {
+      const destroy = await this.confirm('Delete the hometown box?', { default: false })
 
-    if (destroy) {
-      const spinner = Ora('Deleting the box').start()
+      if (destroy) {
+        const spinner = Ora('Deleting the box').start()
 
-      const result = await Execa('vagrant destroy --force', { cwd: HometownDir, shell: true })
+        const result = await Execa('vagrant destroy --force', { cwd: HometownDir, shell: true })
 
-      if (result.stderr) {
-        this.error(result.stderr)
-        spinner.stop()
-        return
+        if (result.stderr) {
+          this.error(result.stderr)
+          spinner.stop()
+          return
+        }
+
+        spinner.succeed('Box deleted')
       }
-
-      spinner.succeed('Box deleted')
+    } catch (err) {
+      // catch any error and print the error message
+      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
+      // exit the process to stop everything
+      process.exit(1)
     }
   }
 }

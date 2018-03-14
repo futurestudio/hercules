@@ -19,11 +19,18 @@ class Sleep extends Command {
   }
 
   async handle () {
-    const spinner = Ora('Suspending your box').start()
+    try {
+      const spinner = Ora('Suspending your box').start()
 
-    await Execa('vagrant', ['suspend'], { cwd: HometownDir })
+      await Execa('vagrant', ['suspend'], { cwd: HometownDir })
 
-    spinner.succeed('Let it sleep. Sshhh')
+      spinner.succeed('Let it sleep. Sshhh')
+    } catch (err) {
+      // catch any error and print the error message
+      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
+      // exit the process to stop everything
+      process.exit(1)
+    }
   }
 }
 
