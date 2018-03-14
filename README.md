@@ -50,7 +50,6 @@ hercules sleep
 hercules finish
 ```
 
-
 ## Commands
 `hercules` is a CLI interface between you and the Hometown Vagrant box.
 
@@ -61,6 +60,12 @@ Hometown is a box that you can use for all your projects. Manage the box (start,
 - `status`: request the status of your hometown box
 - `sleep`: suspend your hometown box
 - `finish`: destroy an existing hometown box
+
+If you want an overview of all commands, use:
+
+```
+hercules -h
+```
 
 
 ## License
