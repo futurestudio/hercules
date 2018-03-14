@@ -25,7 +25,7 @@ That’s it 🚀
 
 *Hint: we’ll update the install link to an NPM package name as soon as we publish an official version*
 
-## Usage
+## Usage (`hercules` CLI)
 Hometown includes the `hercules` CLI. `hercules` is a CLI to manage your Hometown Vagrant box.
 
 The first command you should run is `lift` to create and provision a new box.
