@@ -31,7 +31,7 @@ class Destroy extends Command {
       const destroy = await this.confirm('Delete the hometown box?', { default: false })
 
       if (destroy) {
-        spinner.text('Deleting the box')
+        spinner.text = 'Deleting the box'
 
         const result = await Execa('vagrant destroy --force', { cwd: HometownDir, shell: true })
 

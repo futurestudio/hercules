@@ -36,7 +36,7 @@ class Lift extends Command {
         return
       }
 
-      spinner.text('Bringing your box back from sleep')
+      spinner.text = 'Bringing your box back from sleep'
 
       await Execa('vagrant', ['up'], { cwd: HometownDir })
 
