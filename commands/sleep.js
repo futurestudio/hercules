@@ -30,7 +30,7 @@ class Sleep extends Command {
 
       await Execa('vagrant', ['suspend'], { cwd: HometownDir })
 
-      spinner.succeed('Let it sleep. Sshhh')
+      spinner.succeed('Box suspended. Let it sleep. Sshhh')
     } catch (err) {
       // catch any error and print the error message
       console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
