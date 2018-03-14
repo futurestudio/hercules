@@ -36,6 +36,11 @@ class Lift extends Command {
         return
       }
 
+      if (await Box.isRunning()) {
+        spinner.stop()
+        return this.info('Hometown box is already running')
+      }
+
       spinner.text = 'Bringing your box back from sleep'
 
       await Execa('vagrant', ['up'], { cwd: HometownDir })
