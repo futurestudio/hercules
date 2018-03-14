@@ -7,7 +7,7 @@ Hometown is disposable. If things are messed up, just throw out the old one and 
 
 
 ## Install
-Hometown uses Vagrant and VirtualBox. If you have both tools installed, skip the requirements and jump straight to **Install Hometown**.
+Hometown uses Vagrant and VirtualBox. If you have both tools installed, skip the requirements and jump straight to **[Install Hometown](https://github.com/fs-opensource/hometown/tree/develop#install-hometown)**.
 
 
 ### Requirements
