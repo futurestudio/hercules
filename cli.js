@@ -10,10 +10,11 @@ UpdateNotifier({ pkg: Pkg }).notify()
 
 Ace.addCommand(require('./commands/up'))
 Ace.addCommand(require('./commands/lift'))
-Ace.addCommand(require('./commands/sleep'))
 Ace.addCommand(require('./commands/suspend'))
+Ace.addCommand(require('./commands/sleep'))
 Ace.addCommand(require('./commands/destroy'))
 Ace.addCommand(require('./commands/status'))
+Ace.addCommand(require('./commands/restart'))
 
 // Boot ace to execute commands
 Ace.wireUpWithCommander()
