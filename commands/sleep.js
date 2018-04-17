@@ -28,6 +28,7 @@ class Sleep extends Command {
         return this.warn('\nNo box existing. Stopping here.\n')
       }
 
+      spinnert.text = 'Suspending the box'
       await Execa('vagrant', ['suspend'], { cwd: HometownDir })
 
       spinner.succeed('Box suspended. Let it sleep. Sshhh')
