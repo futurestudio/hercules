@@ -2,6 +2,21 @@
   "name": "hometown",
   "description": "Soon :)",
   "version": "0.2.0",
+  "author": "Future Studio <info@futurestud.io>",
+  "contributors": [
+    {
+      "name": "Marcus Pöhls",
+      "email": "marcus@futurestud.io"
+    },
+    {
+      "name": "Christian Fellner",
+      "email": "christian@futurestud.io"
+    },
+    {
+      "name": "Norman Peitek",
+      "email": "norman@futurestud.io"
+    }
+  ],
   "bin": {
     "hercules": "cli.js"
   },
@@ -10,18 +25,21 @@
   },
   "dependencies": {
     "@adonisjs/ace": "~5.0.1",
-    "execa": "~0.9.0",
+    "execa": "~0.10.0",
     "listr": "~0.13.0",
-    "ora": "~2.0.0",
-    "update-notifier": "~2.3.0"
+    "ora": "~2.1.0",
+    "update-notifier": "~2.5.0"
   },
   "devDependencies": {
-    "eslint": "~4.18.2",
+    "eslint": "~4.19.1",
+    "eslint-config-prettier": "~2.9.0",
     "eslint-config-standard": "~11.0.0",
-    "eslint-plugin-import": "~2.9.0",
+    "eslint-plugin-import": "~2.11.0",
     "eslint-plugin-node": "~6.0.1",
+    "eslint-plugin-prettier": "~2.6.0",
     "eslint-plugin-promise": "~3.7.0",
-    "eslint-plugin-standard": "~3.0.1"
+    "eslint-plugin-standard": "~3.1.0",
+    "prettier": "~1.12.1"
   },
   "engines": {
     "node": ">= 8.9.0"
