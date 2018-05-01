@@ -10,15 +10,15 @@ const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Restart extends Command {
-  static get signature () {
+  static get signature() {
     return 'restart'
   }
 
-  static get description () {
+  static get description() {
     return 'Restart your hometown box'
   }
 
-  async handle () {
+  async handle() {
     try {
       await this.ensureDir(HometownDir)
 

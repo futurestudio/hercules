@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const Os = require('os')
 const Ora = require('ora')
@@ -11,15 +11,15 @@ const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Sleep extends Command {
-  static get signature () {
-    return 'sleep';
+  static get signature() {
+    return 'sleep'
   }
 
-  static get description () {
-    return 'Suspend your hometown box';
+  static get description() {
+    return 'Suspend your hometown box'
   }
 
-  async handle () {
+  async handle() {
     try {
       const spinner = Ora('Checking box status').start()
 
@@ -28,7 +28,7 @@ class Sleep extends Command {
         return this.warn('\nNo box existing. Stopping here.\n')
       }
 
-      spinner.text = 'Suspending the box';
+      spinner.text = 'Suspending the box'
       await Execa('vagrant', ['suspend'], { cwd: HometownDir })
 
       spinner.succeed('Box suspended. Let it sleep. Sshhh')

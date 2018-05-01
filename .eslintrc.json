@@ -3,8 +3,15 @@
     "es6": true,
     "node": true
   },
-  "extends": ["standard", "prettier", "prettier/standard"],
-  "plugins": ["prettier", "standard"],
+  "extends": [
+    "standard",
+    "prettier",
+    "prettier/standard"
+  ],
+  "plugins": [
+    "prettier",
+    "standard"
+  ],
   "parserOptions": {
     "ecmaVersion": 8
   },

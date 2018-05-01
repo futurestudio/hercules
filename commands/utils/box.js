@@ -8,7 +8,7 @@ const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Box {
-  async status () {
+  async status() {
     try {
       const result = await Execa('vagrant', ['status'], { cwd: HometownDir })
       return result
@@ -17,22 +17,22 @@ class Box {
     }
   }
 
-  async isRunning () {
+  async isRunning() {
     const { stdout = '' } = await this.status()
     return stdout.includes('running')
   }
 
-  async isSaved () {
+  async isSaved() {
     const { stdout = '' } = await this.status()
     return stdout.includes('saved')
   }
 
-  async notCreated () {
+  async notCreated() {
     const { stdout = '', stderr = '' } = await this.status()
     return stdout.includes('not created') || stderr.includes('to create a new Vagrant')
   }
 
-  async isCreated () {
+  async isCreated() {
     const notCreated = await this.notCreated()
     return !notCreated
   }

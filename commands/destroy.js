@@ -11,15 +11,15 @@ const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Destroy extends Command {
-  static get signature () {
+  static get signature() {
     return 'destroy'
   }
 
-  static get description () {
+  static get description() {
     return 'Delete your existing hometown box'
   }
 
-  async handle () {
+  async handle() {
     try {
       const spinner = Ora('Checking box status').start()
 
@@ -28,12 +28,17 @@ class Destroy extends Command {
         return this.warn('\nNo box to delete. Stopping here.\n')
       }
 
-      const destroy = await this.confirm('Delete the hometown box?', { default: false })
+      const destroy = await this.confirm('Delete the hometown box?', {
+        default: false
+      })
 
       if (destroy) {
         spinner.text = 'Deleting the box'
 
-        const result = await Execa('vagrant destroy --force', { cwd: HometownDir, shell: true })
+        const result = await Execa('vagrant destroy --force', {
+          cwd: HometownDir,
+          shell: true
+        })
 
         if (result.stderr) {
           this.error(result.stderr)

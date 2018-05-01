@@ -10,15 +10,15 @@ const UserHomeDir = Os.homedir()
 const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Status extends Command {
-  static get signature () {
+  static get signature() {
     return 'status'
   }
 
-  static get description () {
+  static get description() {
     return 'Status of your hometown box'
   }
 
-  async handle () {
+  async handle() {
     try {
       await this.ensureDir(HometownDir)
 
