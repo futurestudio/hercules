@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Os = require('os')
 const Ora = require('ora')
@@ -12,11 +12,11 @@ const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 
 class Sleep extends Command {
   static get signature () {
-    return 'sleep'
+    return 'sleep';
   }
 
   static get description () {
-    return 'Suspend your hometown box'
+    return 'Suspend your hometown box';
   }
 
   async handle () {
@@ -28,7 +28,7 @@ class Sleep extends Command {
         return this.warn('\nNo box existing. Stopping here.\n')
       }
 
-      spinnert.text = 'Suspending the box'
+      spinner.text = 'Suspending the box';
       await Execa('vagrant', ['suspend'], { cwd: HometownDir })
 
       spinner.succeed('Box suspended. Let it sleep. Sshhh')
