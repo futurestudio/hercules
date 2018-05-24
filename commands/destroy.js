@@ -28,11 +28,14 @@ class Destroy extends Command {
         return this.warn('\nNo box to delete. Stopping here.\n')
       }
 
+      spinner.stop()
+
       const destroy = await this.confirm('Delete the hometown box?', {
         default: false
       })
 
       if (destroy) {
+        spinner.start()
         spinner.text = 'Deleting the box'
 
         const result = await Execa('vagrant destroy --force', {
