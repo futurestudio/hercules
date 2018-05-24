@@ -39,6 +39,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: scriptsDir + "install-rethinkdb.sh"
   config.vm.provision "shell", path: scriptsDir + "install-sqlite.sh"
   config.vm.provision "shell", path: scriptsDir + "install-cockroach.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-elasticsearch.sh"
 
   config.vm.provision "shell", path: scriptsDir + "install-rabbit.sh"
 
@@ -58,5 +59,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.network :forwarded_port, guest: 26257, host: 26257   # CockroachDB clients
   config.vm.network :forwarded_port, guest: 8090, host: 8090     # CockroachDB admin console
+
+  config.vm.network :forwarded_port, guest: 9200, host: 9200     # Elasticsarch REST
+  config.vm.network :forwarded_port, guest: 9300, host: 9300     # Elasticsarch cluster communication
 
 end
