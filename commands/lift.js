@@ -12,15 +12,15 @@ const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
 const Vagrantfile = Path.resolve(__dirname, '..', 'Vagrantfile')
 
 class Lift extends Command {
-  static get signature () {
+  static get signature() {
     return 'lift'
   }
 
-  static get description () {
+  static get description() {
     return 'Start your hometown box'
   }
 
-  async handle () {
+  async handle() {
     try {
       // ensure "Hometown" folder in user home dir
       await this.ensureDir(HometownDir)
@@ -54,14 +54,14 @@ class Lift extends Command {
     }
   }
 
-  async initialized () {
+  async initialized() {
     const vagrantfile = Path.resolve(HometownDir, 'Vagrantfile')
     const [exists, created] = await Promise.all([this.pathExists(vagrantfile), Box.isCreated()])
 
     return exists && created
   }
 
-  async create () {
+  async create() {
     // copy Vagrantfile and scripts to "Hometown" folder
     this.copyVagrantfile()
     this.copyScripts()
@@ -72,7 +72,7 @@ class Lift extends Command {
     result.stderr.pipe(process.stderr)
   }
 
-  async copyVagrantfile () {
+  async copyVagrantfile() {
     const target = Path.resolve(HometownDir, 'Vagrantfile')
     const exists = await this.pathExists(target)
 
@@ -81,7 +81,7 @@ class Lift extends Command {
     }
   }
 
-  async copyScripts () {
+  async copyScripts() {
     const source = Path.resolve(__dirname, '..', 'scripts')
     const target = Path.resolve(HometownDir, 'scripts')
     const exists = await this.pathExists(target)

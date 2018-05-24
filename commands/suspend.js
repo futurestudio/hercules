@@ -4,11 +4,11 @@ const Path = require('path')
 const Sleep = require(Path.resolve(__dirname, 'sleep'))
 
 class Suspend extends Sleep {
-  static get signature () {
+  static get signature() {
     return 'suspend'
   }
 
-  static get description () {
+  static get description() {
     return 'Alias command for "sleep"'
   }
 }
