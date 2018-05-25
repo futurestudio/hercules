@@ -25,6 +25,8 @@ class Destroy extends Command {
 
       if (await Box.notCreated()) {
         spinner.stop()
+        await this.deleteHometownDir()
+
         return this.warn('\nNo box to delete. Stopping here.\n')
       }
 
@@ -49,6 +51,8 @@ class Destroy extends Command {
           return
         }
 
+        await this.deleteHometownDir()
+
         spinner.succeed('Box deleted')
       }
     } catch (err) {
@@ -57,6 +61,10 @@ class Destroy extends Command {
       // exit the process to stop everything
       process.exit(1)
     }
+  }
+
+  async deleteHometownDir() {
+    return this.removeDir(HometownDir)
   }
 }
 
