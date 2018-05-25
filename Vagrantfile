@@ -16,8 +16,8 @@ Vagrant.configure("2") do |config|
   # Configure box settings
   config.vm.provider "virtualbox" do |vb|
     vb.name = "hometown"
-    vb.customize ["modifyvm", :id, "--memory", 1024]
-    vb.customize ["modifyvm", :id, "--cpus", 1]
+    vb.customize ["modifyvm", :id, "--memory", 4096]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
     vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
   end
 
