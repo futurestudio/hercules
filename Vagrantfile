@@ -1,47 +1,41 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-currentDir = File.dirname(__FILE__)
+require 'yaml'
+
+currentDir = File.expand_path(File.dirname(__FILE__))
+herculesYamlPath = currentDir + "/Hercules.yaml"
 scriptsDir = currentDir + "/scripts/"
 
 Vagrant.configure("2") do |config|
+
+  if File.exist? herculesYamlPath then
+    settings = YAML::load(File.read(herculesYamlPath))
+  else
+    abort "Hercules settings file not found in #{currentDir}. Create a »Hercules.yaml« file."
+  end
+
+  # Set the VM Provider
+  ENV['VAGRANT_DEFAULT_PROVIDER'] = settings["provider"] ||= "virtualbox"
 
   # Pick a base box
   config.vm.box = "ubuntu/xenial64"
   config.ssh.forward_agent = true
 
   # Box naming
-  config.vm.hostname = "hometown"
+  config.vm.hostname = settings["hostname"] ||= "hometown"
 
   # Configure box settings
   config.vm.provider "virtualbox" do |vb|
     vb.name = "hometown"
-    vb.customize ["modifyvm", :id, "--memory", 4096]
-    vb.customize ["modifyvm", :id, "--cpus", 2]
+    vb.customize ["modifyvm", :id, "--memory", settings["memory"] ||= "2048"]
+    vb.customize ["modifyvm", :id, "--cpus", settings["cpus"] ||= "1"]
     vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
   end
 
   # Create a dedicated private network
   # allows host-only access to the machine using the IP address
-  config.vm.network :private_network, ip: "192.168.33.10"
-
-  # Provisioning
-  config.vm.provision "shell", path: scriptsDir + "update-system.sh"
-
-  config.vm.provision "shell", path: scriptsDir + "install-node.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-git.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-nginx.sh"
-
-  config.vm.provision "shell", path: scriptsDir + "install-mongo.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-redis.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-maria.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-postgres.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-rethinkdb.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-sqlite.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-cockroach.sh"
-  config.vm.provision "shell", path: scriptsDir + "install-elasticsearch.sh"
-
-  config.vm.provision "shell", path: scriptsDir + "install-rabbit.sh"
+  config.vm.network :private_network, ip: settings["ip"] ||= "192.168.33.10"
 
   # Forward ports
   config.vm.network :forwarded_port, guest: 27017, host: 27017   # MongoDB
@@ -62,5 +56,48 @@ Vagrant.configure("2") do |config|
 
   config.vm.network :forwarded_port, guest: 9200, host: 9200     # Elasticsarch REST
   config.vm.network :forwarded_port, guest: 9300, host: 9300     # Elasticsarch cluster communication
+
+
+  # Provisioning
+    config.vm.provision "shell", path: scriptsDir + "update-system.sh"
+
+  config.vm.provision "shell", path: scriptsDir + "install-node.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-git.sh"
+  config.vm.provision "shell", path: scriptsDir + "install-nginx.sh"
+
+  # Install Services
+  config.vm.provision "shell", path: scriptsDir + "install-sqlite.sh"
+
+  if settings.has_key?("cockroachdb") && settings["cockroachdb"]
+    config.vm.provision "shell", path: scriptsDir + "install-cockroach.sh"
+  end
+
+  if settings.has_key?("elasticsearch") && settings["elasticsearch"]
+    config.vm.provision "shell", path: scriptsDir + "install-elasticsearch.sh"
+  end
+
+  if settings.has_key?("mariadb") && settings["mariadb"]
+    config.vm.provision "shell", path: scriptsDir + "install-maria.sh"
+  end
+
+  if settings.has_key?("mongodb") && settings["mongodb"]
+    config.vm.provision "shell", path: scriptsDir + "install-mongo.sh"
+  end
+
+  if settings.has_key?("postgresql") && settings["postgresql"]
+    config.vm.provision "shell", path: scriptsDir + "install-postgres.sh"
+  end
+
+  if settings.has_key?("rabbitmq") && settings["rabbitmq"]
+    config.vm.provision "shell", path: scriptsDir + "install-rabbit.sh"
+  end
+
+  if settings.has_key?("redis") && settings["redis"]
+    config.vm.provision "shell", path: scriptsDir + "install-redis.sh"
+  end
+
+  if settings.has_key?("rethinkdb") && settings["rethinkdb"]
+    config.vm.provision "shell", path: scriptsDir + "install-rethinkdb.sh"
+  end
 
 end
