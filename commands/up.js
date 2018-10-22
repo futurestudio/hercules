@@ -1,7 +1,6 @@
 'use strict'
 
 const Ora = require('ora')
-const Path = require('path')
 const Execa = require('execa')
 const BaseCommand = require('./base')
 
@@ -17,7 +16,7 @@ class Up extends BaseCommand {
   async handle () {
     await this.run(async () => {
       const spinner = Ora('Checking box status').start()
-      const initialized = await this.initialized()
+      const initialized = await this.boxCreated()
 
       if (!initialized) {
         spinner.stop()
@@ -40,9 +39,8 @@ class Up extends BaseCommand {
     })
   }
 
-  async initialized () {
-    const vagrantfile = Path.resolve(this.herculesDir(), 'Vagrantfile')
-    const [exists, created] = await Promise.all([this.pathExists(vagrantfile), this.isCreated()])
+  async boxCreated () {
+    const [exists, created] = await Promise.all([this.initialized(), this.isCreated()])
 
     return exists && created
   }
@@ -51,9 +49,6 @@ class Up extends BaseCommand {
     const result = Execa('vagrant', ['up'], { cwd: this.herculesDir() })
     result.stdout.pipe(process.stdout)
     result.stderr.pipe(process.stderr)
-
-    console.log(await GetStream(result.stdout))
-    console.log(await GetStream(result.stderr))
   }
 }
 
