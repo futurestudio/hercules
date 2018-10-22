@@ -39,9 +39,9 @@ class BaseCommand extends Command {
   }
 
   async ensureInitialized () {
-    const installed = await this.initialized()
+    const initialized = await this.initialized()
 
-    if (!installed) {
+    if (!initialized) {
       throw new Error('Oh no, Hercules is not initialized. Run "hercules init".')
     }
   }
