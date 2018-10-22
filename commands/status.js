@@ -1,54 +1,40 @@
 'use strict'
 
-const Os = require('os')
 const Ora = require('ora')
-const Path = require('path')
-const { Command } = require('@adonisjs/ace')
-const Box = require(Path.resolve(__dirname, 'utils', 'box'))
+const BaseCommand = require('./base')
 
-const UserHomeDir = Os.homedir()
-const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
-
-class Status extends Command {
-  static get signature() {
+class Status extends BaseCommand {
+  static get signature () {
     return 'status'
   }
 
-  static get description() {
-    return 'Status of your hometown box'
+  static get description () {
+    return 'Status of your hercules box'
   }
 
-  async handle() {
-    try {
-      await this.ensureDir(HometownDir)
-
+  async handle () {
+    await this.run(async () => {
       const spinner = Ora('Fetching status').start()
+      const status = await this.status()
 
-      if (await Box.isRunning()) {
+      if (await this.isRunning(status)) {
         spinner.stop()
         return this.success('\nRunning\n')
       }
 
-      if (await Box.isSaved()) {
+      if (await this.isSleeping(status)) {
         spinner.stop()
         return this.info('\nSleeping\n')
       }
 
-      if (await Box.notCreated()) {
+      if (await this.notCreated(status)) {
         spinner.stop()
         return this.warn('\nNot created\n')
       }
 
       spinner.stop()
-
-      const status = await Box.status()
       console.log(status.stdout)
-    } catch (err) {
-      // catch any error and print the error message
-      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
-      // exit the process to stop everything
-      process.exit(1)
-    }
+    })
   }
 }
 
