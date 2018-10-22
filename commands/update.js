@@ -15,26 +15,25 @@ class Update extends BaseCommand {
 
   async handle () {
     await this.run(async () => {
-      const spinner = Ora('Checking if your box is suspended').start()
-      const sleeping = await this.isSleeping()
-
-      if (!sleeping) {
-        spinner.text('Box was running. Suspending it before moving on.')
-        await this.suspendBox()
-      }
-
-      spinner.stop()
-
+      await this.suspendBox()
       await this.updateBox()
     })
   }
 
   async suspendBox () {
+    const spinner = Ora('Suspending the box').start()
     await Execa('hercules', ['sleep'])
+    spinner.succeed('Box suspended.')
   }
 
-  updateBox () {
-    throw new Error('TODO: need to implement this')
+  async updateBox () {
+    this.info('Starting the update')
+    await this.copyVagrantfile()
+    await this.copyScripts()
+
+    const update = Execa('vagrant', ['up', '--provision'], { cwd: this.herculesDir() })
+    update.stdout.pipe(process.stdout)
+    update.stderr.pipe(process.stderr)
   }
 }
 
