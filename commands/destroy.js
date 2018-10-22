@@ -1,47 +1,39 @@
 'use strict'
 
-const Os = require('os')
 const Ora = require('ora')
-const Path = require('path')
 const Execa = require('execa')
-const { Command } = require('@adonisjs/ace')
-const Box = require(Path.resolve(__dirname, 'utils', 'box'))
+const BaseCommand = require('./base')
 
-const UserHomeDir = Os.homedir()
-const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
-
-class Destroy extends Command {
-  static get signature() {
+class Destroy extends BaseCommand {
+  static get signature () {
     return 'destroy'
   }
 
-  static get description() {
-    return 'Delete your existing hometown box'
+  static get description () {
+    return 'Delete your existing hercules box'
   }
 
-  async handle() {
-    try {
+  async handle () {
+    await this.run(async () => {
       const spinner = Ora('Checking box status').start()
 
-      if (await Box.notCreated()) {
+      if (await this.notCreated()) {
         spinner.stop()
-        await this.deleteHometownDir()
+        await this.deleteHerculesDir()
 
         return this.warn('\nNo box to delete. Stopping here.\n')
       }
 
       spinner.stop()
 
-      const destroy = await this.confirm('Delete the hometown box?', {
-        default: false
-      })
+      const destroy = await this.confirm('Delete the hercules box?', { default: false })
 
       if (destroy) {
         spinner.start()
         spinner.text = 'Deleting the box'
 
         const result = await Execa('vagrant destroy --force', {
-          cwd: HometownDir,
+          cwd: this.herculesDir(),
           shell: true
         })
 
@@ -51,20 +43,15 @@ class Destroy extends Command {
           return
         }
 
-        await this.deleteHometownDir()
+        await this.deleteHerculesDir()
 
         spinner.succeed('Box deleted')
       }
-    } catch (err) {
-      // catch any error and print the error message
-      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
-      // exit the process to stop everything
-      process.exit(1)
-    }
+    })
   }
 
-  async deleteHometownDir() {
-    return this.removeDir(HometownDir)
+  async deleteHerculesDir () {
+    return this.removeDir(this.herculesDir())
   }
 }
 

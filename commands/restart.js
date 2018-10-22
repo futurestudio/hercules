@@ -1,38 +1,26 @@
 'use strict'
 
-const Os = require('os')
 const Ora = require('ora')
-const Path = require('path')
 const Execa = require('execa')
-const { Command } = require('@adonisjs/ace')
+const BaseCommand = require('./base')
 
-const UserHomeDir = Os.homedir()
-const HometownDir = Path.resolve(UserHomeDir, 'Hometown')
-
-class Restart extends Command {
-  static get signature() {
+class Restart extends BaseCommand {
+  static get signature () {
     return 'restart'
   }
 
-  static get description() {
-    return 'Restart your hometown box'
+  static get description () {
+    return 'Restart your hercules box'
   }
 
-  async handle() {
-    try {
-      await this.ensureDir(HometownDir)
-
+  async handle () {
+    await this.run(async () => {
       const spinner = Ora('Restarting the box').start()
 
-      await Execa('vagrant', ['reload'], { cwd: HometownDir })
+      await Execa('vagrant', ['reload'], { cwd: this.herculesDir() })
 
       spinner.succeed('Box restarted')
-    } catch (err) {
-      // catch any error and print the error message
-      console.log(`\n❗️ Error: ${this.chalk.red(err.message || err.stderr)}`)
-      // exit the process to stop everything
-      process.exit(1)
-    }
+    })
   }
 }
 
