@@ -1,6 +1,6 @@
 {
-  "name": "hometown",
-  "description": "Soon :)",
+  "name": "@futurestudio/hercules",
+  "description": "Hercules is a Vagrant box that provides a great development environment.",
   "version": "0.2.1",
   "author": "Future Studio <info@futurestud.io>",
   "contributors": [
@@ -21,13 +21,14 @@
     "hercules": "cli.js"
   },
   "bugs": {
-    "url": "https://github.com/fs-opensource/hometown/issues"
+    "url": "https://github.com/fs-opensource/hercules/issues"
   },
   "dependencies": {
     "@adonisjs/ace": "~5.0.8",
     "execa": "~1.0.0",
-    "listr": "~0.13.0",
+    "js-yaml": "~3.12.0",
     "ora": "~3.0.0",
+    "p-iteration": "~1.1.7",
     "update-notifier": "~2.5.0"
   },
   "devDependencies": {
@@ -41,12 +42,12 @@
   "engines": {
     "node": ">= 8.9.0"
   },
-  "homepage": "https://github.com/fs-opensource/hometown#readme",
+  "homepage": "https://github.com/fs-opensource/hercules#readme",
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fs-opensource/hometown.git"
+    "url": "git+https://github.com/fs-opensource/hercules.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

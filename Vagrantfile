@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   if File.exist? herculesYamlPath then
     settings = YAML::load(File.read(herculesYamlPath))
   else
-    abort "Hercules settings file not found in #{currentDir}. Create a »Hercules.yaml« file."
+    abort "Hercules settings file not found in #{currentDir}. Create a »hercules.yaml« file in the ~/hercules directory."
   end
 
   # Set the VM Provider
@@ -23,11 +23,11 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   # Box naming
-  config.vm.hostname = settings["hostname"] ||= "hometown"
+  config.vm.hostname = settings["hostname"] ||= "hercules"
 
   # Configure box settings
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "hometown"
+    vb.name = "hercules"
     vb.customize ["modifyvm", :id, "--memory", settings["memory"] ||= "2048"]
     vb.customize ["modifyvm", :id, "--cpus", settings["cpus"] ||= "1"]
     vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
