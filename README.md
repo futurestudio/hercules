@@ -44,10 +44,12 @@ Lifting a new box takes some minutes.
 Hercules is a box that you can use for all your projects. Manage the box (start, suspend, destroy) with the following commands:
 
 - `up`: create or start the Hercules box
+- `init`: initialize the Hercules box configuration
 - `status`: request the status of your Hercules box
 - `sleep`: suspend your Hercules box
 - `destroy`: destroy an existing Hercules box
 - `restart`: restart your Hercules box
+- `update`: update the Hercules box to the latest version
 
 If you want an overview of all commands, use:
 
