@@ -7,18 +7,25 @@ const { forEachSeries } = require('p-iteration')
 
 class Init extends BaseCommand {
   static get signature () {
-    return 'init'
+    return `
+    init
+    { -f, --force: Override an existing environment }
+    `
   }
 
   static get description () {
     return 'Initialize your hercules box'
   }
 
-  async handle () {
+  async handle (_, { force }) {
     try {
       this.info('Preparing hercules on your machine at "~/hercules"\n')
 
-      if (!await this.initialized()) {
+      if (await this.notInitialized()) {
+        return this.prepareHercules()
+      }
+
+      if (force) {
         return this.prepareHercules()
       }
 
@@ -42,17 +49,6 @@ class Init extends BaseCommand {
     await this.copyConfig()
 
     this.success('\nAll done. Start your box with "hercules up".')
-  }
-
-  async copyVagrantfile () {
-    const target = Path.resolve(this.herculesDir(), 'Vagrantfile')
-    await this.copy(this.vagrantfile(), target)
-  }
-
-  async copyScripts () {
-    const source = Path.resolve(__dirname, '..', 'scripts')
-    const target = Path.resolve(this.herculesDir(), 'scripts')
-    await this.copy(source, target)
   }
 
   async copyConfig () {
