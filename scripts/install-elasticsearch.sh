@@ -23,8 +23,8 @@ sudo apt-get update && sudo apt-get install -y elasticsearch
 
 sudo update-rc.d elasticsearch defaults 95 10
 
-## Use 'hometown' as the cluster
-sudo sed -i "s/#cluster.name: my-application/cluster.name: hometown/" /etc/elasticsearch/elasticsearch.yml
+## Use 'hercules' as the cluster
+sudo sed -i "s/#cluster.name: my-application/cluster.name: hercules/" /etc/elasticsearch/elasticsearch.yml
 ## Bind IP to access from host
 sudo sed -i "s/#network.host: 192.168.0.1/network.host: 0.0.0.0/" /etc/elasticsearch/elasticsearch.yml
 
