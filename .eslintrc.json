@@ -4,25 +4,12 @@
     "node": true
   },
   "extends": [
-    "standard",
-    "prettier",
-    "prettier/standard"
+    "standard"
   ],
   "plugins": [
-    "prettier",
     "standard"
   ],
   "parserOptions": {
-    "ecmaVersion": 8
-  },
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "semi": false,
-        "singleQuote": true,
-        "printWidth": 120
-      }
-    ]
+    "ecmaVersion": 2018
   }
 }
