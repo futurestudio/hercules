@@ -1,17 +1,16 @@
-# Provider configuration
+---
 provider: virtualbox
 
-# Box configuration
 ip: "192.168.33.10"
 memory: 2048
-cpus: 2
+cpus: 1
 
-# Manage Services
-cockroachdb: false
-elasticsearch: false
-mariadb: true
-mongodb: true
-postgresql: true
-rabbitmq: false
-redis: true
-rethinkdb: false
+services:
+  cockroachdb: true
+  elasticsearch: true
+  mariadb: true
+  mongodb: true
+  postgresql: true
+  rabbitmq: true
+  redis: true
+  rethinkdb: true
