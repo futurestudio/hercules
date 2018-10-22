@@ -32,7 +32,7 @@ class Destroy extends BaseCommand {
         spinner.start()
         spinner.text = 'Deleting the box'
 
-        const result = await Execa('vagrant destroy --force', {
+        const result = await Execa('vagrant', ['destroy', '--force'], {
           cwd: this.herculesDir(),
           shell: true
         })
