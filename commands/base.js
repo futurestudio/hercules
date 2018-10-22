@@ -38,6 +38,10 @@ class BaseCommand extends Command {
     return this.pathExists(this.herculesDir())
   }
 
+  async notInitialized () {
+    return !this.initialized()
+  }
+
   async ensureInitialized () {
     const initialized = await this.initialized()
 
@@ -48,6 +52,17 @@ class BaseCommand extends Command {
 
   vagrantfile () {
     return Path.resolve(__dirname, '..', 'Vagrantfile')
+  }
+
+  async copyVagrantfile () {
+    const target = Path.resolve(this.herculesDir(), 'Vagrantfile')
+    await this.copy(this.vagrantfile(), target)
+  }
+
+  async copyScripts () {
+    const source = Path.resolve(__dirname, '..', 'scripts')
+    const target = Path.resolve(this.herculesDir(), 'scripts')
+    await this.copy(source, target)
   }
 
   configFile () {
