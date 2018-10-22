@@ -1,24 +1,24 @@
-# hometown
-Future Studio Hometown provisions a global Vagrant box that gives you a great development setup. No need to create an individual Vagrant box for each of your project.
+# Hercules
+Future Studio Hercules provisions a global Vagrant box that gives you a great development setup. No need to create an individual Vagrant box for each of your project.
 
-Hometown is the single development box you can use for all your projects. It ships with commonly used databases and tools. It also comes with a CLI called **`hercules`**.
+Hercules is the single development box you can use for all your projects. It ships with commonly used databases and tools. It also comes with a CLI called **`hercules`**.
 
-Hometown is disposable. If things are messed up, just throw out the old one and create a new box.
+Hercules is disposable. If things are messed up, just throw out the old one and create a new box.
 
 
 ## Install
-Hometown uses Vagrant and VirtualBox. If you have both tools installed, skip the requirements and jump straight to **[Install Hometown](https://github.com/fs-opensource/hometown/tree/develop#install-hometown)**.
+Hercules uses Vagrant and VirtualBox. If you have both tools installed, skip the requirements and jump straight to **[Install Hercules](https://github.com/fs-opensource/hercules/tree/develop#install-hercules)**.
 
 
 ### Requirements
-Launching your Hometown box requires you to install [Vagrant](https://www.vagrantup.com/downloads.html) and a virtualization provider, like [VirtualBox](https://www.virtualbox.org/wiki/Downloads). If you don’t have the tools installed, go ahead and download and install them (they provide easy-to-use installers).
+Launching your Hercules box requires you to install [Vagrant](https://www.vagrantup.com/downloads.html) and a virtualization provider, like [VirtualBox](https://www.virtualbox.org/wiki/Downloads). If you don’t have the tools installed, go ahead and download and install them (they provide easy-to-use installers).
 
 
-### Install Hometown
+### Install Hercules
 Copy & paste the following command to your terminal and kick it off:
 
 ```
-npm i -g https://github.com/fs-opensource/hometown.git
+npm i -g https://github.com/fs-opensource/hercules.git
 ```
 
 That’s it 🚀
@@ -26,40 +26,28 @@ That’s it 🚀
 *Hint: we’ll update the install link to an NPM package name as soon as we publish an official version*
 
 ## Usage (`hercules` CLI)
-Hometown includes the `hercules` CLI. `hercules` is a CLI to manage your Hometown Vagrant box.
+Hercules includes the `hercules` CLI. `hercules` is a CLI to manage your Hercules Vagrant box.
 
 The first command you should run is `lift` to create and provision a new box.
 
 ```
 # create a new box
-hercules lift
+hercules up
 ```
 
 Lifting a new box takes some minutes.
 
-Here’s a short overview of other commands:
-
-```
-# grab the box status
-hercules status
-
-# suspend the box (at the end of your work day)
-hercules sleep
-
-# destroy the box
-hercules finish
-```
 
 ## Commands
-`hercules` is a CLI interface between you and the Hometown Vagrant box.
+`hercules` is a CLI interface between you and the Hercules Vagrant box.
 
-Hometown is a box that you can use for all your projects. Manage the box (start, suspend, destroy) with the following commands:
+Hercules is a box that you can use for all your projects. Manage the box (start, suspend, destroy) with the following commands:
 
-- `lift`: create or start the hometown box
-- `up`: is an alias for `lift`
-- `status`: request the status of your hometown box
-- `sleep`: suspend your hometown box
-- `finish`: destroy an existing hometown box
+- `up`: create or start the Hercules box
+- `status`: request the status of your Hercules box
+- `sleep`: suspend your Hercules box
+- `destroy`: destroy an existing Hercules box
+- `restart`: restart your Hercules box
 
 If you want an overview of all commands, use:
 
