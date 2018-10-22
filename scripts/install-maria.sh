@@ -27,9 +27,9 @@ sed -i '/^bind-address/s/bind-address.*=.*/bind-address = 0.0.0.0/' /etc/mysql/m
 mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO root@'0.0.0.0' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
 sudo systemctl restart mysql
 
-mysql --user="root" --password="secret" -e "CREATE USER 'hometown'@'0.0.0.0' IDENTIFIED BY 'secret';"
-mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO 'hometown'@'0.0.0.0' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
-mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO 'hometown'@'%' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
+mysql --user="root" --password="secret" -e "CREATE USER 'hercules'@'0.0.0.0' IDENTIFIED BY 'secret';"
+mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO 'hercules'@'0.0.0.0' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
+mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO 'hercules'@'%' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
 mysql --user="root" --password="secret" -e "FLUSH PRIVILEGES;"
 
 
