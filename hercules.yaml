@@ -8,9 +8,6 @@ cpus: 1
 services:
   cockroachdb: true
   elasticsearch: true
-  mariadb: true
   mongodb: true
-  postgresql: true
   rabbitmq: true
-  redis: true
   rethinkdb: true
