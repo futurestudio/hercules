@@ -9,8 +9,12 @@ sudo apt-get install -y glibc libncurses
 wget -qO- https://binaries.cockroachdb.com/cockroach-v2.0.6.linux-amd64.tgz | tar  xvz
 sudo cp -i cockroach-v2.0.6.linux-amd64/cockroach /usr/local/bin
 
-## content for systemd mongodb.service
-cockroackservice="
+sudo mkdir /var/lib/cockroach
+sudo useradd cockroach
+sudo chown cockroach /var/lib/cockroach
+
+## content for systemd cockroach.service
+cockroachservice="
     [Unit]
     Description=Cockroach Database cluster node
     Requires=network.target
@@ -31,7 +35,7 @@ cockroackservice="
     WantedBy=default.target
 "
 
-sudo echo "$cockroackservice" > /etc/systemd/system/cockroach.service
+sudo echo "$cockroachservice" > /etc/systemd/system/cockroach.service
 
 
 ## Start
