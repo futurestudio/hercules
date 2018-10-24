@@ -39,7 +39,7 @@ class BaseCommand extends Command {
   }
 
   async notInitialized () {
-    return !this.initialized()
+    return !await this.initialized()
   }
 
   async ensureInitialized () {
