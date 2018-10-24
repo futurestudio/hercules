@@ -3,6 +3,12 @@
   "description": "Hercules is a Vagrant box that provides a great development environment.",
   "version": "0.3.0",
   "author": "Future Studio <info@futurestud.io>",
+  "bin": {
+    "hercules": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/fs-opensource/hercules/issues"
+  },
   "contributors": [
     {
       "name": "Marcus Pöhls",
@@ -17,12 +23,6 @@
       "email": "norman@futurestud.io"
     }
   ],
-  "bin": {
-    "hercules": "cli.js"
-  },
-  "bugs": {
-    "url": "https://github.com/fs-opensource/hercules/issues"
-  },
   "dependencies": {
     "@adonisjs/ace": "~5.0.8",
     "execa": "~1.0.0",
@@ -45,6 +45,9 @@
   "homepage": "https://github.com/fs-opensource/hercules#readme",
   "license": "MIT",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fs-opensource/hercules.git"
