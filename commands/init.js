@@ -22,7 +22,9 @@ class Init extends BaseCommand {
       this.info('Preparing hercules on your machine at "~/hercules"\n')
 
       if (await this.notInitialized()) {
-        return this.prepareHercules()
+        await this.prepareHercules()
+        this.success('\nAll done. Start your box with "hercules up".')
+        return
       }
 
       if (force) {
@@ -37,6 +39,7 @@ class Init extends BaseCommand {
       }
 
       await this.prepareHercules()
+      this.success('\nAll done. Update your box with "hercules update".')
     } catch (error) {
       this.prettyPrintError(error)
       process.exit(1)
@@ -47,8 +50,6 @@ class Init extends BaseCommand {
     await this.copyVagrantfile()
     await this.copyScripts()
     await this.copyConfig()
-
-    this.success('\nAll done. Start your box with "hercules up".')
   }
 
   async copyConfig () {
