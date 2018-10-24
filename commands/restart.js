@@ -10,12 +10,12 @@ class Restart extends BaseCommand {
   }
 
   static get description () {
-    return 'Restart your hercules box'
+    return 'Restart your hercules box.'
   }
 
   async handle () {
     await this.run(async () => {
-      const spinner = Ora('Restarting the box').start()
+      const spinner = Ora('Restarting the box. Grab a coffee in the meantime :)').start()
 
       await Execa('vagrant', ['reload'], { cwd: this.herculesDir() })
 
