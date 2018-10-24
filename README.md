@@ -9,6 +9,9 @@ Hercules is disposable. If things are messed up, just throw out the old one and 
 ## Install
 Hercules uses Vagrant and VirtualBox. If you have both tools installed, skip the requirements and jump straight to **[Install Hercules](https://github.com/fs-opensource/hercules/tree/develop#install-hercules)**.
 
+```
+npm i -g @futurestudio/hercules
+```
 
 ### Requirements
 Launching your Hercules box requires you to install [Vagrant](https://www.vagrantup.com/downloads.html) and a virtualization provider, like [VirtualBox](https://www.virtualbox.org/wiki/Downloads). If you don’t have the tools installed, go ahead and download and install them (they provide easy-to-use installers).
@@ -18,7 +21,7 @@ Launching your Hercules box requires you to install [Vagrant](https://www.vagran
 Copy & paste the following command to your terminal and kick it off:
 
 ```
-npm i -g https://github.com/fs-opensource/hercules.git
+npm i -g @futurestudio/hercules
 ```
 
 That’s it 🚀
