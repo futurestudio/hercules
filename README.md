@@ -7,11 +7,12 @@ Hercules is disposable. If things are messed up, just throw out the old one and 
 
 
 ## Install
-Hercules uses Vagrant and VirtualBox. If you have both tools installed, skip the requirements and jump straight to **[Install Hercules](https://github.com/fs-opensource/hercules/tree/develop#install-hercules)**.
+Hercules uses Vagrant. If you have Vagrant on your machine, install Hercules right away:
 
 ```
 npm i -g @futurestudio/hercules
 ```
+
 
 ### Requirements
 Launching your Hercules box requires you to install [Vagrant](https://www.vagrantup.com/downloads.html) and a virtualization provider, like [VirtualBox](https://www.virtualbox.org/wiki/Downloads). If you don’t have the tools installed, go ahead and download and install them (they provide easy-to-use installers).
@@ -26,7 +27,6 @@ npm i -g @futurestudio/hercules
 
 That’s it 🚀
 
-*Hint: we’ll update the install link to an NPM package name as soon as we publish an official version*
 
 ## Usage (`hercules` CLI)
 Hercules includes the `hercules` CLI. `hercules` is a CLI to manage your Hercules Vagrant box.
