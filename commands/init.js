@@ -23,7 +23,7 @@ class Init extends BaseCommand {
 
       if (await this.notInitialized()) {
         await this.prepareHercules()
-        this.success('\nAll done. Start your box with "hercules up".')
+        this.success('\nHercules configuration created. Start your box with "hercules up".')
         return
       }
 
@@ -39,7 +39,7 @@ class Init extends BaseCommand {
       }
 
       await this.prepareHercules()
-      this.success('\nAll done. Update your box with "hercules update".')
+      this.success('\nHercules configuration created. Update your box with "hercules update".')
     } catch (error) {
       this.prettyPrintError(error)
       process.exit(1)
