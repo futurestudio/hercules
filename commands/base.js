@@ -102,8 +102,7 @@ class BaseCommand extends Command {
   }
 
   async isCreated () {
-    const notCreated = await this.notCreated()
-    return !notCreated
+    return !await this.notCreated()
   }
 }
 
