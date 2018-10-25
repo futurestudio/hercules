@@ -20,7 +20,7 @@ class Up extends BaseCommand {
 
       if (!initialized) {
         spinner.stop()
-        this.info('No box existent. Lifting a new one! This takes some minutes.\n')
+        this.info('No box existent. Lifting a new one! This takes several minutes.\n')
 
         await this.create()
         return
@@ -49,6 +49,10 @@ class Up extends BaseCommand {
     const result = Execa('vagrant', ['up'], { cwd: this.herculesDir() })
     result.stdout.pipe(process.stdout)
     result.stderr.pipe(process.stderr)
+
+    result.stdout.on('close', () => {
+      this.success('\nBox created. Your Hercules box is ready to use.')
+    })
   }
 }
 
