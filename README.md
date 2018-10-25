@@ -38,7 +38,7 @@ The first command you should run is `lift` to create and provision a new box.
 hercules up
 ```
 
-Lifting a new box takes some minutes.
+Lifting a new box takes several minutes.
 
 
 ## Commands
