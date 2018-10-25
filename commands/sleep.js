@@ -16,10 +16,16 @@ class Sleep extends BaseCommand {
   async handle () {
     await this.run(async () => {
       const spinner = Ora('Checking box status').start()
+      const status = await this.status()
 
-      if (await this.notCreated()) {
+      if (await this.notCreated(status)) {
         spinner.stop()
         return this.warn('\nNo box existing. Stopping here.\n')
+      }
+
+      if (await this.isSleeping(status)) {
+        spinner.stop()
+        return this.info('\nBox is already sleeping.\n')
       }
 
       spinner.text = 'Suspending the box'
