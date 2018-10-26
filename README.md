@@ -6,15 +6,6 @@ Hercules is the single development box you can use for all your projects. It shi
 Hercules is disposable. If things are messed up, just throw out the old one and create a new box.
 
 
-## Install
-Hercules uses Vagrant. If you have Vagrant on your machine, install Hercules right away:
-
-```
-npm i -g @futurestudio/hercules
-```
-
-
-## Official Docs
 Find the [extensive documentation here](https://boost.futurestud.io/docs/master/hercules).
 
 
