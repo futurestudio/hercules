@@ -12,7 +12,7 @@ sudo apt-get install -y postgresql-10
 
 # Configure Postgres remote access
 sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/10/main/postgresql.conf
-sudo echo "host    all             all             10.0.2.2/32               md5" | tee -a /etc/postgresql/10/main/pg_hba.conf
+sudo echo "host    all             all             192.168.33.1/32             md5" | tee -a /etc/postgresql/10/main/pg_hba.conf
 sudo -u postgres psql -c "CREATE ROLE hercules LOGIN PASSWORD 'secret' SUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;"
 sudo -u postgres /usr/bin/createdb --echo --owner=hercules hercules
 
