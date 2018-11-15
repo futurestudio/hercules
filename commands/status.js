@@ -14,7 +14,7 @@ class Status extends BaseCommand {
 
   async handle () {
     await this.run(async () => {
-      const spinner = Ora('Fetching status').start()
+      const spinner = Ora('Fetching box status').start()
       const status = await this.status()
 
       if (await this.isRunning(status)) {
