@@ -2,6 +2,7 @@
 
 module.exports = {
   up: require('./up'),
+  ssh: require('./ssh'),
   init: require('./init'),
   sleep: require('./sleep'),
   update: require('./update'),
