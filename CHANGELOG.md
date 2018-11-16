@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 - 2018-11-16
+## [1.1.0](https://github.com/fs-opensource/hercules/compare/v1.0.0...v1.1.0) - 2018-11-16
 
 ### Added
 - `hercules ssh` command: SSH into the hercules box, from every directory
