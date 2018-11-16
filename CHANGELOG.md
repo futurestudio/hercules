@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 - 2018-11-xx
+## 1.1.0 - 2018-11-16
 
 ### Added
 - `hercules ssh` command: SSH into the hercules box, from every directory
