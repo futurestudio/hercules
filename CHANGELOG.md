@@ -4,6 +4,7 @@
 
 ### Added
 - `hercules ssh` command: SSH into the hercules box, from every directory
+- logo in readme
 
 ### Updated
 - fix IP address for host entry that is added to Postgres `pg_hba.conf`
