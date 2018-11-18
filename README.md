@@ -20,6 +20,10 @@
 
 Future Studio Hercules provisions a global Vagrant box that gives you a great development setup. No need to create an individual Vagrant box for each of your project.
 
+```bash
+npm i -g @futurestudio/hercules
+```
+
 Hercules is the single development box you can use for all your projects. It ships with commonly used databases and tools. It also comes with a CLI called **`hercules`**.
 
 Hercules is disposable. If things are messed up, just throw out the old one and create a new box.
