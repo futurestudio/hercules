@@ -2,7 +2,7 @@
 'use strict'
 
 const Ace = require('@adonisjs/ace')
-const Pkg = require('.package.json')
+const Pkg = require('./package.json')
 const Commands = require('./commands')
 const UpdateNotifier = require('update-notifier')
 
