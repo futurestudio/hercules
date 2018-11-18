@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/fs-opensource/hercules/compare/v1.1.0...v1.2.0) - 2018-11-16
+
+### Added
+- show version when invoking hercules with `--version` flag: `hercules --version`
+- show install command to readme
+
+
 ## [1.1.0](https://github.com/fs-opensource/hercules/compare/v1.0.0...v1.1.0) - 2018-11-16
 
 ### Added
