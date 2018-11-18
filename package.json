@@ -25,24 +25,32 @@
   ],
   "dependencies": {
     "@adonisjs/ace": "~5.0.8",
-    "execa": "~1.0.0",
     "js-yaml": "~3.12.0",
     "ora": "~3.0.0",
     "p-iteration": "~1.1.7",
     "update-notifier": "~2.5.0"
   },
   "devDependencies": {
+    "ava": "1.0.0-rc.2",
     "eslint": "~5.9.0",
     "eslint-config-standard": "~12.0.0",
     "eslint-plugin-import": "~2.14.0",
     "eslint-plugin-node": "~8.0.0",
     "eslint-plugin-promise": "~4.0.1",
-    "eslint-plugin-standard": "~4.0.0"
+    "eslint-plugin-standard": "~4.0.0",
+    "execa": "~1.0.0"
   },
   "engines": {
     "node": ">= 8.9.0"
   },
   "homepage": "https://github.com/fs-opensource/hercules#readme",
+  "keywords": [
+    "dev-environment",
+    "developer",
+    "devops",
+    "node.js",
+    "vagrant"
+  ],
   "license": "MIT",
   "main": "index.js",
   "publishConfig": {
@@ -51,5 +59,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fs-opensource/hercules.git"
+  },
+  "scripts": {
+    "test": "ava",
+    "test-single": "ava --match"
   }
 }
