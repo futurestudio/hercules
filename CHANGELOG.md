@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/fs-opensource/hercules/compare/v1.2.0...v1.2.1) - 2018-11-19
+
+### Updated
+- fix update notifier to set the global NPM flag in the shown update command
+
+
 ## [1.2.0](https://github.com/fs-opensource/hercules/compare/v1.1.0...v1.2.0) - 2018-11-18
 
 ### Added

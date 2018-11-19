@@ -6,7 +6,7 @@ const Pkg = require('./package.json')
 const Commands = require('./commands')
 const UpdateNotifier = require('update-notifier')
 
-UpdateNotifier({ pkg: Pkg }).notify()
+UpdateNotifier({ pkg: Pkg }).notify({ isGlobal: true })
 
 Object.keys(Commands).forEach(Command => Ace.addCommand(Commands[Command]))
 
