@@ -18,6 +18,8 @@
 
 ------
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/futurestudio/hercules.svg)](https://greenkeeper.io/)
+
 Future Studio Hercules provisions a global Vagrant box that gives you a great development setup. No need to create an individual Vagrant box for each of your project.
 
 ```bash
