@@ -8,8 +8,11 @@
   <br/>
   <br/>
   <p>
-    <a href="https://snyk.io/test/github/fs-opensource/hercules?targetFile=package.json"><img src="https://snyk.io/test/github/fs-opensource/hercules/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/fs-opensource/hercules?targetFile=package.json" style="max-width:100%;"></a>
+    <a href="https://travis-ci.org/futurestudio/hercules"><img src="https://travis-ci.org/futurestudio/hercules.svg?branch=master" alt="Build Status" data-canonical-src="https://travis-ci.org/futurestudio/hercules.svg?branch=master" style="max-width:100%;"></a>
+    <a href="https://snyk.io/test/github/futurestudio/hercules?targetFile=package.json"><img src="https://snyk.io/test/github/fs-opensource/hercules/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/fs-opensource/hercules?targetFile=package.json" style="max-width:100%;"></a>
     <a href="https://www.npmjs.com/package/@futurestudio/hercules"><img src="https://img.shields.io/npm/v/@futurestudio/hercules.svg" alt="hercules Version" data-canonical-src="https://img.shields.io/npm/v/@futurestudio/hercules.svg" style="max-width:100%;"></a>
+    <a href="https://greenkeeper.io/" rel="nofollow" class="rich-diff-level-one"><img src="https://badges.greenkeeper.io/futurestudio/hercules.svg" alt="Greenkeeper badge" data-canonical-src="https://badges.greenkeeper.io/futurestudio/hercules.svg" style="max-width:100%;"></a>
+
   </p>
   <p>
     <em>Follow <a href="http://twitter.com/marcuspoehls">@marcuspoehls</a> for updates!</em>
@@ -17,8 +20,6 @@
 </div>
 
 ------
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/futurestudio/hercules.svg)](https://greenkeeper.io/)
 
 Future Studio Hercules provisions a global Vagrant box that gives you a great development setup. No need to create an individual Vagrant box for each of your project.
 
