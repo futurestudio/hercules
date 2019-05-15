@@ -7,7 +7,7 @@
     "hercules": "cli.js"
   },
   "bugs": {
-    "url": "https://github.com/fs-opensource/hercules/issues"
+    "url": "https://github.com/futurestudio/hercules/issues"
   },
   "contributors": [
     {
@@ -43,7 +43,7 @@
   "engines": {
     "node": ">= 8.9.0"
   },
-  "homepage": "https://github.com/fs-opensource/hercules#readme",
+  "homepage": "https://github.com/futurestudio/hercules#readme",
   "keywords": [
     "dev-environment",
     "developer",
@@ -58,7 +58,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fs-opensource/hercules.git"
+    "url": "git+https://github.com/futurestudio/hercules.git"
   },
   "scripts": {
     "test": "ava",

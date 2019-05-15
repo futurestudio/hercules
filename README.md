@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/fs-opensource/hercules/blob/master/media/hercules.png?raw=true" alt="hercules logo" width="471" style="max-width:100%;">
+  <img src="https://github.com/futurestudio/hercules/blob/master/media/hercules.png?raw=true" alt="hercules logo" width="471" style="max-width:100%;">
   <br/>
   <br/>
   <p>
@@ -8,7 +8,7 @@
   <br/>
   <br/>
   <p>
-    <a href="https://snyk.io/test/github/fs-opensource/hercules?targetFile=package.json"><img src="https://snyk.io/test/github/fs-opensource/hercules/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/fs-opensource/hercules?targetFile=package.json" style="max-width:100%;"></a>
+    <a href="https://snyk.io/test/github/futurestudio/hercules?targetFile=package.json"><img src="https://snyk.io/test/github/futurestudio/hercules/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/futurestudio/hercules?targetFile=package.json" style="max-width:100%;"></a>
     <a href="https://www.npmjs.com/package/@futurestudio/hercules"><img src="https://img.shields.io/npm/v/@futurestudio/hercules.svg" alt="hercules Version" data-canonical-src="https://img.shields.io/npm/v/@futurestudio/hercules.svg" style="max-width:100%;"></a>
   </p>
   <p>
@@ -39,5 +39,5 @@ MIT © [Future Studio](https://futurestud.io)
 ---
 
 > [futurestud.io](https://futurestud.io) &nbsp;&middot;&nbsp;
-> GitHub [@fs-opensource](https://github.com/fs-opensource/) &nbsp;&middot;&nbsp;
+> GitHub [@futurestudio](https://github.com/futurestudio/) &nbsp;&middot;&nbsp;
 > Twitter [@futurestud_io](https://twitter.com/futurestud_io)
