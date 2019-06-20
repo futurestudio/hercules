@@ -24,7 +24,7 @@
     }
   ],
   "dependencies": {
-    "@adonisjs/ace": "~5.0.8",
+    "@adonisjs/ace": "~6.0.0",
     "js-yaml": "~3.13.0",
     "ora": "~3.4.0",
     "p-iteration": "~1.1.7",
