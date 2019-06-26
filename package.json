@@ -25,23 +25,23 @@
   ],
   "dependencies": {
     "@adonisjs/ace": "~5.0.8",
-    "js-yaml": "~3.13.0",
+    "js-yaml": "~3.13.1",
     "ora": "~3.4.0",
-    "p-iteration": "~1.1.7",
+    "p-iteration": "~1.1.8",
     "update-notifier": "~3.0.0"
   },
   "devDependencies": {
-    "ava": "2.0.0",
-    "eslint": "~6.0.0",
+    "ava": "2.1.0",
+    "eslint": "~6.0.1",
     "eslint-config-standard": "~12.0.0",
-    "eslint-plugin-import": "~2.17.0",
+    "eslint-plugin-import": "~2.18.0",
     "eslint-plugin-node": "~9.1.0",
     "eslint-plugin-promise": "~4.2.1",
     "eslint-plugin-standard": "~4.0.0",
-    "execa": "~2.0.0"
+    "execa": "~2.0.1"
   },
   "engines": {
-    "node": ">= 8.9.0"
+    "node": ">= 8.12.0"
   },
   "homepage": "https://github.com/futurestudio/hercules#readme",
   "keywords": [

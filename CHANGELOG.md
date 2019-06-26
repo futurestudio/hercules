@@ -1,9 +1,14 @@
 # Changelog
 
-## [1.2.x](https://github.com/futurestudio/hercules/compare/v1.2.0...v1.2.1) - 2018-xx-xx
+## [2.0.0](https://github.com/futurestudio/hercules/compare/v1.2.1...v2.0.0) - 2019-xx-xx
 
 ### Updated
+- updated minimum Node.js version: `>= 8.12`
+- bump dependencies
 - Readme: rename `fs-opensource` to `futurestudio` username
+
+### Breaking Changes
+- updated minimum Node.js version: `>= 8.12`
 
 
 ## [1.2.1](https://github.com/futurestudio/hercules/compare/v1.2.0...v1.2.1) - 2018-11-19
