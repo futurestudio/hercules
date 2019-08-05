@@ -27,7 +27,7 @@
     "execa": "~2.0.3"
   },
   "engines": {
-    "node": ">= 8.12.0"
+    "node": ">= 8.9.0"
   },
   "homepage": "https://github.com/futurestudio/hercules#readme",
   "keywords": [

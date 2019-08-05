@@ -1,14 +1,14 @@
 # Changelog
 
-## [2.0.0](https://github.com/futurestudio/hercules/compare/v1.2.1...v2.0.0) - 2019-xx-xx
+## [1.3.0](https://github.com/futurestudio/hercules/compare/v1.2.1...v1.3.0) - 2019-08-05
+
+### Added
+- [Faktory](https://github.com/contribsys/faktory) queue
 
 ### Updated
-- updated minimum Node.js version: `>= 8.12`
 - bump dependencies
+- replace `p-iteration` with `@supercharge/collections`
 - Readme: rename `fs-opensource` to `futurestudio` username
-
-### Breaking Changes
-- updated minimum Node.js version: `>= 8.12`
 
 
 ## [1.2.1](https://github.com/futurestudio/hercules/compare/v1.2.0...v1.2.1) - 2018-11-19
