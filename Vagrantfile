@@ -86,4 +86,10 @@ Vagrant.configure("2") do |config|
     config.vm.network :forwarded_port, guest: 8080, host: 8080     # RethinkDB admin console
   end
 
+  if settings.has_key?("faktory") && settings["faktory"]
+    config.vm.provision "shell", path: scriptsDir + "install-faktory.sh"
+    config.vm.network :forwarded_port, guest: 7419, host: 7419     # Faktory
+    config.vm.network :forwarded_port, guest: 7420, host: 7420     # Faktory Web UI
+  end
+
 end

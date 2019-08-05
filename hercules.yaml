@@ -11,3 +11,4 @@ services:
   mongodb: true
   rabbitmq: true
   rethinkdb: true
+  faktory: true
