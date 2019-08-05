@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/futurestudio/hercules/compare/v1.5.0...v1.5.1) - 2019-08-05
+
+### Updated
+- fix RethinkDB installation
+- Fetch MongoDB keys the way it’s described in the official documentation
+
+
 ## [1.5.0](https://github.com/futurestudio/hercules/compare/v1.4.1...v1.5.0) - 2019-08-05
 
 ### Added
