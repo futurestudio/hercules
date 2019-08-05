@@ -3,7 +3,7 @@
 const Path = require('path')
 const Yaml = require('js-yaml')
 const BaseCommand = require('./base')
-const { forEachSeries } = require('p-iteration')
+const Collect = require('@supercharge/collections')
 
 class Init extends BaseCommand {
   static get signature () {
@@ -65,7 +65,7 @@ class Init extends BaseCommand {
 
     const services = Object.keys(yaml.services)
 
-    await forEachSeries(services, async service => {
+    await Collect(services).forEachSeries(async service => {
       yaml[service] = await this.confirm(`Install ${service}`)
     })
 
