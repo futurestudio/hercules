@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0](https://github.com/futurestudio/hercules/compare/v1.4.1...v1.5.0) - 2019-08-05
+
+### Added
+- install `htop` while provisioning the Hercules box
+
+
 ## [1.4.1](https://github.com/futurestudio/hercules/compare/v1.4.0...v1.4.1) - 2019-08-05
 
 ### Updated
