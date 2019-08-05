@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/futurestudio/hercules/compare/v1.3.0...v1.4.0) - 2019-08-05
+
+### Added
+- mark services as installed
+- check if service is already installed and skip
+
+
 ## [1.3.0](https://github.com/futurestudio/hercules/compare/v1.2.1...v1.3.0) - 2019-08-05
 
 ### Added

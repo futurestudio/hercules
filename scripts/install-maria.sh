@@ -5,6 +5,15 @@
 ## Install non-interactive
 export DEBIAN_FRONTEND=noninteractive
 
+if [ -f /home/vagrant/.hercules-installed/mariadb ]
+then
+    echo "MariaDB is already installed"
+    exit 0
+fi
+
+touch /home/vagrant/.hercules-installed/mariadb
+
+
 
 ### Add Maria PPA
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8

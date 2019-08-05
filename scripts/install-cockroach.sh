@@ -2,6 +2,15 @@
 
 # CockroachDB
 
+if [ -f /home/vagrant/.hercules-installed/cockroachdb ]
+then
+    echo "CockroachDB is already installed"
+    exit 0
+fi
+
+touch /home/vagrant/.hercules-installed/cockroachdb
+
+
 ## Install
 sudo apt-get update
 sudo apt-get install -y glibc libncurses

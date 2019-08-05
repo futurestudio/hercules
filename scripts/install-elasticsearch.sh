@@ -2,6 +2,15 @@
 
 # ElasticSearch
 
+if [ -f /home/vagrant/.hercules-installed/elasticsearch ]
+then
+    echo "Elasticsearch is already installed"
+    exit 0
+fi
+
+touch /home/vagrant/.hercules-installed/elasticsearch
+
+
 ## Install
 ### first, Java
 sudo apt-get update

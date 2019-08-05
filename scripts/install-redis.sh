@@ -2,6 +2,15 @@
 
 # Redis, all in one
 
+if [ -f /home/vagrant/.hercules-installed/redis ]
+then
+    echo "Redis is already installed"
+    exit 0
+fi
+
+touch /home/vagrant/.hercules-installed/redis
+
+
 # install
 sudo add-apt-repository -y ppa:chris-lea/redis-server
 sudo apt-get update
