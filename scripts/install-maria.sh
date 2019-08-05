@@ -17,7 +17,7 @@ touch /home/vagrant/.hercules-installed/mariadb
 
 ### Add Maria PPA
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.osuosl.org/pub/mariadb/repo/10.3/ubuntu xenial main'
+sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.osuosl.org/pub/mariadb/repo/10.3/ubuntu $(lsb_release -sc) main'
 sudo apt-get update
 
 #### Set the automated root password
