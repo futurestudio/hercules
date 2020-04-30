@@ -14,7 +14,8 @@
     "@supercharge/collections": "~1.13.0",
     "js-yaml": "~3.13.1",
     "ora": "~4.0.0",
-    "update-notifier": "~4.1.0"
+    "update-notifier": "~4.1.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "ava": "3.8.1",
@@ -49,6 +50,9 @@
   "scripts": {
     "test": "ava",
     "test-single": "ava --match",
-    "lint": "eslint **.js"
-  }
+    "lint": "eslint **.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
