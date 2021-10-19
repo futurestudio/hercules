@@ -10,7 +10,7 @@
     "url": "https://github.com/futurestudio/hercules/issues"
   },
   "dependencies": {
-    "@adonisjs/ace": "~5.0.8",
+    "@adonisjs/ace": "~6.0.0",
     "@supercharge/collections": "~1.13.0",
     "js-yaml": "~3.14.0",
     "ora": "~4.1.0",
